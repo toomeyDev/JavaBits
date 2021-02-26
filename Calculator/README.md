@@ -1,14 +1,19 @@
-## Getting Started
+# JavaBits Calculator
+This is a basic calculator application developed as a learning experience/experiment.
+Currently not feature complete, development is ongoing.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Licensing
 
-## Folder Structure
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being ``GNU General Public License'', with the
+Front-Cover Texts being ``A GNU Manual'', and with the Back-Cover Texts
+as in (a) below.  A copy of the license is included in the section
+entitled ``GNU Free Documentation License''.
 
-The workspace contains two folders by default, where:
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-## Dependency Management
-
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/. 
