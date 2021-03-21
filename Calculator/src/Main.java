@@ -18,11 +18,7 @@ This file is part of JavaBits Calculator.
 */
     public class Main {
     public static void main(String[] arg){
-        Numerical test = new Numerical();
-        test.showOperation("add", 5);
-        test.showOperation("divide", 2);
-        test.showOperation("multiply", 5);
-        test.showOperation("subtract", 2345);
-        System.out.println(test.isPositive());
+        Numerical test = new Numerical(10.04);
+        test.showOperation("add", new Numerical(55));
     }
 }

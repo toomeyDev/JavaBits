@@ -48,83 +48,50 @@ public class Numerical {
     }
 
     /*
-    Addition operations
+    Addition operation
     for both integers & floating point
     */
-    public int sum(int addend)
+    public double sum(Numerical addend)
     {
-        intVal += addend;
+        intVal += addend.getValueInt();
+        doubleVal += addend.getValueDouble();
         positive = intVal > 0 ? true : false; // check to see if the number is positive or negative
-        doubleVal = Double.valueOf(intVal);
-        return intVal;
-    }
-
-    public double sum(double addend)
-    {
-        doubleVal += addend;
-        positive = doubleVal > 0 ? true : false; // check to see if the number is positive or negative
-        intVal = (int)doubleVal;
         return doubleVal;
     }
 
     /*
-    Subtraction operations
+    Subtraction operation
     for both integers & floating point
     */
-    public int subtract(int subtrahend)
+    public double subtract(Numerical subtrahend)
     {
-        intVal -= subtrahend;
+        intVal -= subtrahend.getValueInt();
+        doubleVal -= subtrahend.getValueDouble();
         positive = intVal > 0 ? true : false; // check to see if the number is positive or negative
-        doubleVal = Double.valueOf(intVal);
-        return intVal;
+        return doubleVal;
     }
 
-    public double subtract(double subtrahend)
+    /*
+    Multiplication operation
+    for both integers & floating point
+    */
+    public double multiply(Numerical multiplier)
     {
-        doubleVal -= subtrahend;
+        intVal *= multiplier.getValueInt();
+        doubleVal *= multiplier.getValueDouble();
         positive = doubleVal > 0 ? true : false; // check to see if the number is positive or negative
-        intVal = (int)doubleVal;
         return doubleVal;
     }
 
 
     /*
-    Multiplication operations
+    Division operation
     for both integers & floating point
     */
-    public int multiply(int multiplier)
+    public double divide(Numerical divisor)
     {
-        intVal *= multiplier;
-        positive = intVal > 0 ? true : false; // check to see if the number is positive or negative
-        doubleVal = Double.valueOf(intVal);
-        return intVal;
-    }
-
-    public double multiply(double multiplier)
-    {
-        doubleVal *= multiplier;
-        positive = doubleVal > 0 ? true : false; // check to see if the number is positive or negative
-        intVal = (int)doubleVal;
-        return doubleVal;
-    }
-
-
-    /*
-    Division operations
-    for both integers & floating point
-    */
-    public int divide(int divisor)
-    {
-        intVal /= divisor;
-        positive = intVal > 0 ? true : false; // check to see if the number is positive or negative
-        doubleVal = Double.valueOf(intVal);
-        return intVal;
-    }
-
-    public double divide(double divisor)
-    {
-        doubleVal /= divisor;
-        intVal = (int)doubleVal;
+        doubleVal /= divisor.getValueDouble();
+        intVal /= divisor.getValueInt();
         positive = doubleVal > 0 ? true : false; // check to see if the number is positive or negative
         return doubleVal;
     }
@@ -153,7 +120,7 @@ public class Numerical {
     and print out the resultant values
     for integer/double values
     */
-    public void showOperation(String op, int n)
+    public void showOperation(String op, Numerical n)
     {
         op = op.toLowerCase();
         switch (op) {
@@ -172,25 +139,4 @@ public class Numerical {
             default: System.out.println("Invalid input, valid inputs are 'add', 'subtract' 'multiply' and 'divide' ");
         }
     }
-
-    public void showOperation(String op, double n)
-    {
-        op = op.toLowerCase();
-        switch (op) {
-            case "add":
-                System.out.println(sum(n));
-                break;
-            case "subtract":
-                System.out.println(subtract(n));
-                break;
-            case "multiply":
-                System.out.println(multiply(n));
-                break;
-            case "divide":
-                System.out.println(divide(n));
-                break;
-            default: System.out.println("Invalid input, valid inputs are 'add', 'subtract' 'multiply' and 'divide' ");
-        }
-    }
-
 }
