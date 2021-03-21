@@ -16,9 +16,11 @@ This file is part of JavaBits Calculator.
     You should have received a copy of the GNU General Public License
     along with JavaBits Calculator.  If not, see <https://www.gnu.org/licenses/>.
 */
+
     public class Main {
     public static void main(String[] arg){
         Numerical test = new Numerical(10.04);
         test.showOperation("add", new Numerical(55));
+        CalculatorApplication app = new CalculatorApplication();
     }
 }
