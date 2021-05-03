@@ -52,9 +52,12 @@ public class GameWindow extends Frame{
     }
     
     /*
-    * handles selection of various menu states/layouts
+    * handles selection of various menu states/layouts at startup
       Main: starting menu with inputs to start, load, or exit
       Game: main gameplay view, has inputs to save, load, return to menu
+      Load: should load a saved-game from a text file, allow user to resume a
+      previously saved game
+      Exit: Closes the game and the window
     */
     public void menuSequence(String menuSelection)
     {
@@ -66,6 +69,7 @@ public class GameWindow extends Frame{
         }
         else if(menuSelection.equals("game")){
             System.out.println("Gameplay Screen");
+            setLayout("game");
         }
         else if(menuSelection.equals("exit")){
             System.out.println("Closing..");
@@ -78,11 +82,14 @@ public class GameWindow extends Frame{
     * handles setting up different layouts for the window
     */
     public void setLayout(String layout){
-        layout.toLowerCase();
+        layout = layout.toLowerCase();
         
         switch(layout) {
             case "main":
                 setupMainMenuLayout(gameArea);
+                break;
+            case "game":
+                setupGameWindowLayout(gameArea);
                 break;
         }
     }
@@ -96,13 +103,24 @@ public class GameWindow extends Frame{
         this.setLocation(xLocation, yLocation);
     }
 
+    /*
+    setup main menu layout
+    */
     public void setupMainMenuLayout(Window w){
         
+        w.removeAll(); // clear the screen before adding new components
+
         Label header = new Label("Main Menu");
         header.setBounds(345, 100, 100, 50);
 
         Button start = new Button("Start");
         start.setBounds(325, 200, 100, 50);
+        // start button functionality
+        start.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setLayout("game");
+            }
+        });
 
         Button load = new Button("Load");
         load.setBounds(325, 300, 100, 50);
@@ -121,6 +139,24 @@ public class GameWindow extends Frame{
         w.add(start);
         w.add(load);
         w.add(exit);
+        
+    }
+
+    public void setupGameWindowLayout(Window w){
+        w.removeAll(); // clear the screen before adding new components
+        Label header = new Label("TextRPG");
+        header.setBounds(345, 100, 100, 50);
+
+        Button menuButton = new Button("Menu");
+        menuButton.setBounds(325, 700, 100, 50);
+        menuButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                setLayout("main");
+            }
+        });
+
+        w.add(header);
+        w.add(menuButton);
     }
 
     /* window within the main frame to display game contents
