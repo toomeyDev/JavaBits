@@ -6,6 +6,9 @@ import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.*;
+
+import Logic.GameSequence;
+
 import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Label;
@@ -19,6 +22,7 @@ import java.awt.Label;
 public class GameWindow extends Frame{
         
     DisplayWindow gameArea; // main window where game text/options will be displayed
+    GameSequence game; // handles sequencing and logic of the game
 
     // default constructor with no special parameters
     public GameWindow(){
@@ -39,6 +43,7 @@ public class GameWindow extends Frame{
             // center the window on the screen
             centerScreen();
 
+            // setup main game window for display of game conent
             gameArea = new DisplayWindow(this, 0);
             gameArea.setVisible(true);
 
@@ -49,6 +54,10 @@ public class GameWindow extends Frame{
                     gameArea.updatePosition();
                 }
             });
+
+            game = new GameSequence(); // initial setup for game logic
+
+            menuSequence("main"); // default to main menu layout
     }
     
     /*
@@ -90,6 +99,7 @@ public class GameWindow extends Frame{
                 break;
             case "game":
                 setupGameWindowLayout(gameArea);
+                game.gamePlayLoop(gameArea);
                 break;
         }
     }
@@ -144,6 +154,7 @@ public class GameWindow extends Frame{
 
     public void setupGameWindowLayout(Window w){
         w.removeAll(); // clear the screen before adding new components
+        
         Label header = new Label("TextRPG");
         header.setBounds(345, 100, 100, 50);
 
@@ -151,6 +162,7 @@ public class GameWindow extends Frame{
         menuButton.setBounds(325, 700, 100, 50);
         menuButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                game.exitLoop();
                 setLayout("main");
             }
         });
