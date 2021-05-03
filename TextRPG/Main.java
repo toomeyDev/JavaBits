@@ -1,3 +1,5 @@
+import Logic.GameSequence;
+
 /*
 Copyright 2021, Matthew Toomey
 
@@ -18,7 +20,8 @@ This file is part of JavaBits project (a collection of open-source software bein
 */
 public class Main{
 public static void main(String[] args){
-        
-
+        GameSequence game = new GameSequence();
+        game.setup();
+        game.gamePlayLoop(1);
     }
 }
